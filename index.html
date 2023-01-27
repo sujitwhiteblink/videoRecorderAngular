@@ -28,7 +28,7 @@
           <button ng-if="disabledStop" ng-click="startRecording()" id="startRecording" class="btn btn-primary me-2">Start Recording</button>
           <button ng-if="!disabledStop" ng-disabled="disabledStop" ng-click="stopRecording()" id="stopRecording" class="btn btn-primary me-2">Stop Recording</button>
           <button ng-disabled="disabledDownload" ng-click="downloadRecording()" id="downloadRecording" class="btn btn-primary me-2">Download Recording</button>
-          <button ng-click="testConnection()" id="testConnection" class="btn btn-primary me-2">testConnection</button>
+          <!-- <button ng-click="testConnection()" id="testConnection" class="btn btn-primary me-2">testConnection</button> -->
         </div>
       </div>
     </div>
@@ -184,18 +184,6 @@
             })
            
         }
-        $scope.testConnection2 = function() {
-            fetch("https://video-recoder-backend.vercel.app/testConnection", {
-            // fetch("http://localhost:3031/testConnection", {
-            method: "post"
-            })
-            .then((response) => {
-              console.log("res =>", response);
-            })
-           
-        }
-
-
         })
     </script>
   </body>
