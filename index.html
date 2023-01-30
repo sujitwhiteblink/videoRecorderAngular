@@ -202,8 +202,8 @@
            
         }
         $scope.countDownload = function() {
-            // fetch(`${$scope.BaseURL}/testConnection`, {
-            fetch("http://localhost:3031/countDownload", {
+            fetch(`${$scope.BaseURL}/testConnection`, {
+            // fetch("http://localhost:3031/countDownload", {
             method: "get"
             })
             .then((response) => {
@@ -212,8 +212,8 @@
            
         }
         $scope.countVideos = function() {
-            // fetch(`${$scope.BaseURL}/testConnection`, {
-            fetch("http://localhost:3031/countVideos", {
+            fetch(`${$scope.BaseURL}/testConnection`, {
+            // fetch("http://localhost:3031/countVideos", {
             method: "get"
             })
             .then((response) => {
