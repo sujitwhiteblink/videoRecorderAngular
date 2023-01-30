@@ -128,8 +128,8 @@
                     document.getElementById("startRecording").innerHTML = 'Sending Recorded video to Backend...'
                     document.getElementById("startRecording").setAttribute("disabled", "true");
 
-                    fetch(`http://localhost:3031/sendMediaFeed?videoDuration=${videoDuration}`, {
-                    // fetch(`${$scope.BaseURL}/sendMediaFeed?videoDuration=${videoDuration}`, {
+                    // fetch(`http://localhost:3031/sendMediaFeed?videoDuration=${videoDuration}`, {
+                    fetch(`${$scope.BaseURL}/sendMediaFeed?videoDuration=${videoDuration}`, {
                         method: "POST",
                         body: formData,
                         contentType: "multipart/form-data",
