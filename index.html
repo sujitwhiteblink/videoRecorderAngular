@@ -30,6 +30,17 @@
           <button ng-disabled="disabledDownload" ng-click="downloadRecording()" id="downloadRecording" class="btn btn-primary me-2">Download Recording</button>
           <!-- <button ng-click="testConnection()" id="testConnection" class="btn btn-primary me-2">testConnection</button> -->
         </div>
+
+        <br>
+        <br>
+        <br>
+        <hr>
+        <h2>only for testing </h2>
+        <br>
+        <div class="w-50 d-flex mt-3 aling-item-center">
+          <button  ng-click="countVideos()"  class="btn btn-primary me-2">countVideos</button>
+          <button  ng-click="countDownload()" class="btn btn-primary me-2">countDownload</button>
+        </div>
       </div>
     </div>
 
@@ -114,8 +125,11 @@
                     formData.append("mediaFeed", e.data);
                     formData.append("videoDuration", videoDuration);
 
-                    // fetch(`http://localhost:3031/sendMediaFeed?videoDuration=${videoDuration}`, {
-                    fetch(`${$scope.BaseURL}/sendMediaFeed?videoDuration=${videoDuration}`, {
+                    document.getElementById("startRecording").innerHTML = 'Sending Recorded video to Backend...'
+                    document.getElementById("startRecording").setAttribute("disabled", "true");
+
+                    fetch(`http://localhost:3031/sendMediaFeed?videoDuration=${videoDuration}`, {
+                    // fetch(`${$scope.BaseURL}/sendMediaFeed?videoDuration=${videoDuration}`, {
                         method: "POST",
                         body: formData,
                         contentType: "multipart/form-data",
@@ -123,6 +137,8 @@
                     .then((response) => {
                         console.log(response);
                         $scope.disabledDownload = false;
+                        document.getElementById("startRecording").innerHTML = 'Start Recording'
+                        document.getElementById("startRecording").removeAttribute("disabled");
                         $scope.$apply()
                     })
                     .catch((error) => {
@@ -142,6 +158,7 @@
                 $scope.recorder.stop();
                 $scope.isRecording = false;
                 $scope.disabledStop = true;
+
             } catch (e) {
                 console.log(e);
             }
@@ -178,6 +195,26 @@
             fetch(`${$scope.BaseURL}/testConnection`, {
             // fetch("http://localhost:3031/testConnection", {
             method: "post"
+            })
+            .then((response) => {
+              console.log("res =>", response);
+            })
+           
+        }
+        $scope.countDownload = function() {
+            // fetch(`${$scope.BaseURL}/testConnection`, {
+            fetch("http://localhost:3031/countDownload", {
+            method: "get"
+            })
+            .then((response) => {
+              console.log("res =>", response);
+            })
+           
+        }
+        $scope.countVideos = function() {
+            // fetch(`${$scope.BaseURL}/testConnection`, {
+            fetch("http://localhost:3031/countVideos", {
+            method: "get"
             })
             .then((response) => {
               console.log("res =>", response);
